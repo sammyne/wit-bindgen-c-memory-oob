@@ -1,3 +1,4 @@
 guest-c/bindings/
 out/
+**/target/
 _cargo/
