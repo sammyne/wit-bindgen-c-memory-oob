@@ -9,7 +9,7 @@ void greeter_greet(greeter_string_t *who, greeter_string_t *ret) {
   const size_t N = strlen(greeting);
   const size_t M = N + who->len;
 
-  uint8_t *out = calloc(M+1, sizeof(uint8_t));
+  uint8_t *out = (uint8_t*) calloc(M+1, sizeof(uint8_t));
 
   memcpy(out, greeting, N);
   memcpy(out + N, who->ptr, who->len);

@@ -42,6 +42,11 @@ async fn main() -> anyhow::Result<()> {
     println!("out = {out}");
 
     let out = instance.call_say_hi(&mut store).await.context("call func say-hi")?;
+    println!("---");
+    println!("out = {out}");
+
+    let out = instance.call_greet_cc(&mut store, WHO).await.context("call func greet-cc")?;
+    println!("---");
     println!("out = {out}");
 
     Ok(())

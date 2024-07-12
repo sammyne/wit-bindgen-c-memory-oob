@@ -2,5 +2,8 @@ package sammyne:demo@0.0.1;
 
 world greeter {
     export greet: func(who: string) -> string;
+
+    export greet-cc: func(who: string) -> string;
+
     export say-hi: func() -> string;
 }
