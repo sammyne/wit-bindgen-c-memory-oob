@@ -13,7 +13,14 @@ bindgen:
 modularize: bindgen
 	rm -rf out
 	mkdir -p out
-	$(CC) -std=c++11 -I$(GUEST_DIR) $(GUEST_DIR)/bindings/greeter.c $(GUEST_DIR)/bindings/greeter_component_type.o $(GUEST_DIR)/src/greeter.c $(GUEST_DIR)/src/greeter.cc -o out/greeter.wasm -mexec-model=reactor
+	# -fno-exceptions 的作用参见 https://github.com/WebAssembly/wasi-sdk?tab=readme-ov-file#notable-limitations
+	$(CC) -std=c++11 -fno-exceptions -I$(GUEST_DIR) 	\
+		$(GUEST_DIR)/bindings/greeter.c 								\
+		$(GUEST_DIR)/bindings/greeter_component_type.o 	\
+		$(GUEST_DIR)/src/greeter.c 											\
+		$(GUEST_DIR)/src/greeter.cc 										\
+		-o out/greeter.wasm 														\
+		-mexec-model=reactor
 
 componentize: modularize
 	wasm-tools component new out/greeter.wasm -o out/greeter.component.wasm --adapt /opt/wasmtime/adapter-modules/wasi_snapshot_preview1.reactor.wasm

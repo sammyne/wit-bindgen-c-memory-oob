@@ -49,6 +49,10 @@ async fn main() -> anyhow::Result<()> {
     println!("---");
     println!("out = {out}");
 
+    let out = instance.call_greet_cc_vector(&mut store, WHO).await.context("call func greet-cc-vector")?;
+    println!("---");
+    println!("out = {out}");
+
     Ok(())
 }
 

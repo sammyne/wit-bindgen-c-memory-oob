@@ -4,6 +4,7 @@ world greeter {
     export greet: func(who: string) -> string;
 
     export greet-cc: func(who: string) -> string;
+    export greet-cc-vector: func(who: string) -> string;
 
     export say-hi: func() -> string;
 }
